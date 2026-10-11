@@ -1,0 +1,15 @@
+{
+  "name": "fly",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A minimal, dependency-free Node.js web starter.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "check": "node --check src/server.mjs && node --check public/app.js && node --check test/server.test.mjs",
+    "test": "node --test"
+  }
+}

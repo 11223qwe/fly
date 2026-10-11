@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c1020" />
+    <meta
+      name="description"
+      content="Fly is a small, dependency-free starting point for a web project."
+    />
+    <title>Fly — A small place to begin</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Fly home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M5 23.5 26.5 5 19 27l-4.6-8.3L5 23.5Z" fill="currentColor" />
+              <path d="m14.4 18.7 7.1-6.2" stroke="#101426" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>fly</span>
+        </a>
+        <span class="topbar-note">A minimal web starter</span>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR PROJECT IS READY</p>
+          <h1 id="hero-title">A small place<br />to <span>begin.</span></h1>
+          <p class="intro">
+            A clean starting point for your next idea. No framework, no build step,
+            no extra packages — just the essentials, ready to shape.
+          </p>
+          <button class="launch-button" id="check-button" type="button">
+            <span id="button-label">Check the connection</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="feedback" id="feedback" aria-live="polite">Your local starter is standing by.</p>
+        </div>
+
+        <aside class="status-card" aria-label="Project status">
+          <div class="card-topline">
+            <span class="card-label">LOCAL STATUS</span>
+            <span class="status-indicator" id="status-indicator" aria-hidden="true"></span>
+          </div>
+          <div class="orbit-art" aria-hidden="true">
+            <span class="orbit orbit-one"></span>
+            <span class="orbit orbit-two"></span>
+            <span class="orbit orbit-three"></span>
+            <span class="orbit-core">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M5 23.5 26.5 5 19 27l-4.6-8.3L5 23.5Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="orbit-star star-one">✳</span>
+            <span class="orbit-star star-two">✦</span>
+          </div>
+          <p class="status-title" id="status-title">Ready for takeoff</p>
+          <p class="status-detail" id="status-detail">Waiting for a local health check.</p>
+          <div class="card-divider"></div>
+          <div class="endpoint-row">
+            <span>Health endpoint</span>
+            <code>/health</code>
+          </div>
+          <div class="endpoint-row">
+            <span>Runtime</span>
+            <code>Node.js · no deps</code>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <span>Made to be changed.</span>
+        <span>FLY <span class="footer-separator">/</span> STARTER 01</span>
+      </footer>
+    </main>
+  </body>
+</html>
