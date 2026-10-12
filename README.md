@@ -37,10 +37,24 @@ npm test
 
 `check` 使用 Node.js 检查 JavaScript 语法；`test` 使用 Node.js 自带的测试运行器，验证首页、健康检查、未知路径、路径穿越防护和不支持的 HTTP 方法。整个项目没有第三方依赖，不需要运行 `npm install`。
 
+## 持续集成
+
+GitHub Actions 工作流位于 `.github/workflows/ci.yml`。它会在每次推送、Pull Request 和手动触发时运行，并分别在当前受支持的 Node.js 22、24、26 版本上执行 `npm run check` 和 `npm test`。一个版本失败时，其余版本仍会继续运行；同一分支有新提交时，旧的运行会被取消。
+
+目前不启用 npm 缓存，也不安装依赖：项目没有第三方 npm 包或锁文件，因此没有可复用的下载缓存。将来加入依赖时，应先提交 `package-lock.json`，再改用 `npm ci` 并通过 `actions/setup-node` 按锁文件缓存 npm 下载。
+
+### CI 失败排查
+
+1. 在 GitHub 打开 **Actions**，进入失败的 CI 运行和对应的 Node.js 版本任务，展开第一个红色步骤查看错误。
+2. 若 `npm run check` 失败，按日志中的文件和行号修复语法错误，然后在本地重新运行 `npm run check`。
+3. 若 `npm test` 失败，检查日志指出的失败用例和堆栈，并在本地运行 `npm test` 复现。
+4. 若没有启动运行，确认仓库设置允许 GitHub Actions，并检查提交或 PR 所在分支中是否包含 `.github/workflows/ci.yml`。
+
 ## 文件用途
 
 | 文件 | 用途 |
 | --- | --- |
+| `.github/workflows/ci.yml` | 在受支持的 Node.js 版本上运行语法检查和测试。 |
 | `package.json` | 项目元数据、Node.js 版本要求和启动/检查/测试命令。 |
 | `.gitignore` | 忽略依赖目录、环境文件、日志和操作系统临时文件。 |
 | `.editorconfig` | 统一常见编辑器的缩进、换行和字符编码。 |
@@ -54,6 +68,9 @@ npm test
 
 ```text
 fly/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── public/
 │   ├── app.js
 │   ├── index.html
@@ -67,4 +84,3 @@ fly/
 ├── package.json
 └── README.md
 ```
-
