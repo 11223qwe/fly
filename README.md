@@ -1,5 +1,7 @@
 # Fly
 
+[![CI](https://github.com/11223qwe/fly/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/11223qwe/fly/actions/workflows/ci.yml)
+
 一个零依赖的 Node.js 静态 Web 项目起点。它自带本地 HTTP 服务器、健康检查接口和自动化测试，无需构建工具或第三方 npm 包。
 
 ## 环境要求
@@ -41,7 +43,7 @@ npm test
 
 GitHub Actions 工作流位于 `.github/workflows/ci.yml`。它会在每次推送、Pull Request 和手动触发时运行，并分别在当前受支持的 Node.js 22、24、26 版本上执行 `npm run check` 和 `npm test`。一个版本失败时，其余版本仍会继续运行；同一分支有新提交时，旧的运行会被取消。
 
-目前不启用 npm 缓存，也不安装依赖：项目没有第三方 npm 包或锁文件，因此没有可复用的下载缓存。将来加入依赖时，应先提交 `package-lock.json`，再改用 `npm ci` 并通过 `actions/setup-node` 按锁文件缓存 npm 下载。
+CI 已通过 `actions/setup-node` 启用 npm 缓存，并使用已提交的 `package-lock.json` 作为缓存依据。缓存的是 npm 下载内容，而非 `node_modules`；由于目前没有第三方依赖，缓存收益有限，CI 无需执行依赖安装。将来引入第三方依赖时，应先更新锁文件，再在检查和测试前执行 `npm ci`。
 
 ### CI 失败排查
 
