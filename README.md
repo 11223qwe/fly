@@ -58,6 +58,7 @@ CI 已通过 `actions/setup-node` 启用 npm 缓存，并使用已提交的 `pac
 | --- | --- |
 | `.github/workflows/ci.yml` | 在受支持的 Node.js 版本上运行语法检查和测试。 |
 | `package.json` | 项目元数据、Node.js 版本要求和启动/检查/测试命令。 |
+| `package-lock.json` | npm 锁文件，记录项目依赖元数据，并作为 CI npm 缓存键的依据。 |
 | `.gitignore` | 忽略依赖目录、环境文件、日志和操作系统临时文件。 |
 | `.editorconfig` | 统一常见编辑器的缩进、换行和字符编码。 |
 | `src/server.mjs` | 零依赖 HTTP 服务器，提供静态文件和 `/health` 接口。 |
@@ -65,6 +66,7 @@ CI 已通过 `actions/setup-node` 启用 npm 缓存，并使用已提交的 `pac
 | `public/styles.css` | 响应式页面样式，支持减少动态效果的系统偏好。 |
 | `public/app.js` | 页面交互和服务器健康状态检查。 |
 | `test/server.test.mjs` | 基于 Node.js 内置测试工具的 HTTP 集成测试。 |
+| `README.md` | 项目概述、运行与验证步骤，以及 CI 配置和故障排查说明。 |
 
 ## 项目结构
 
@@ -83,6 +85,7 @@ fly/
 │   └── server.test.mjs
 ├── .editorconfig
 ├── .gitignore
+├── package-lock.json
 ├── package.json
 └── README.md
 ```
